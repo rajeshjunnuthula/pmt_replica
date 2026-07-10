@@ -1,0 +1,33 @@
+import Button from "./Button";
+
+interface PageHeaderProps {
+  title: string;
+  subtitle: string;
+  buttonText?: string;
+}
+
+function PageHeader({
+  title,
+  subtitle,
+  buttonText,
+}: PageHeaderProps) {
+  return (
+    <div className="flex items-center justify-between mb-8">
+      <div>
+        <h1 className="text-4xl font-bold">
+          {title}
+        </h1>
+
+        <p className="text-gray-500 mt-2">
+          {subtitle}
+        </p>
+      </div>
+
+      {buttonText && (
+        <Button>{buttonText}</Button>
+      )}
+    </div>
+  );
+}
+
+export default PageHeader;

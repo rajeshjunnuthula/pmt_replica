@@ -1,0 +1,66 @@
+# ==========================
+# Dependencies
+# ==========================
+node_modules/
+
+# ==========================
+# Build Output
+# ==========================
+dist/
+dist-ssr/
+build/
+coverage/
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
+!.env.example
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================
+# Local Files
+# ==========================
+*.local
+
+# ==========================
+# TypeScript
+# ==========================
+*.tsbuildinfo
+
+# ==========================
+# IDE
+# ==========================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Temporary Files
+# ==========================
+.cache/
+tmp/
+temp/
+
+# ==========================
+# Database Files (if using SQLite in future)
+# ==========================
+*.sqlite
+*.sqlite3
