@@ -1,11 +1,10 @@
 import type { Project } from "../../types/project";
-
 import ProjectCard from "./ProjectCard";
 
 interface ProjectListProps {
   projects: Project[];
   onEdit: (project: Project) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 function ProjectList({

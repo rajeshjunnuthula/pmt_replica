@@ -1,10 +1,10 @@
-import tasks from "../../data/tasks";
+import mockTasks from "../../data/tasks";
 import TaskCard from "./TaskCard";
 
 function TaskList() {
   return (
     <>
-      {tasks.map((task) => (
+      {mockTasks.map((task) => (
         <TaskCard
           key={task.id}
           task={task}

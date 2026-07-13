@@ -6,7 +6,7 @@ import type { Project } from "../../types/project";
 interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 function ProjectCard({
@@ -16,15 +16,19 @@ function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Card className="mb-4">
-      <div className="flex items-center justify-between">
+      <div className="flex justify-between items-start">
 
         <div>
           <h2 className="text-lg font-semibold">
             {project.name}
           </h2>
 
-          <p className="text-sm text-gray-500">
-            {project.members} Members
+          <p className="text-gray-600 mt-1">
+            {project.description || "No description"}
+          </p>
+
+          <p className="text-sm text-gray-500 mt-2">
+            Start: {project.startDate}
           </p>
         </div>
 
