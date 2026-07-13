@@ -6,7 +6,7 @@ import type { Project } from "../../types/project";
 interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 }
 
 function ProjectCard({

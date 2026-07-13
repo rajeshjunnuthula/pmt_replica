@@ -1,30 +1,32 @@
 import type { Project } from "../types";
-import { mockProjects } from "../data";
+import { apiFetch } from "./client";
 
 class ProjectApi {
-  async getAll(): Promise<Project[]> {
-    return Promise.resolve(mockProjects);
+  async getAll(search?: string): Promise<Project[]> {
+    const query = search ? `?search=${encodeURIComponent(search)}` : "";
+    return apiFetch<Project[]>(`/projects${query}`);
   }
 
-  async getById(id: string): Promise<Project | undefined> {
-    return Promise.resolve(
-      mockProjects.find((project: Project) => project.id === id)
-    );
+  async getById(id: number): Promise<Project> {
+    return apiFetch<Project>(`/projects/${id}`);
   }
 
-  async create(project: Project): Promise<Project> {
-    return Promise.resolve(project);
-  }
-
-  async update(id: string, project: Project): Promise<Project> {
-    return Promise.resolve({
-      ...project,
-      id,
+  async create(project: Partial<Project>): Promise<Project> {
+    return apiFetch<Project>("/projects", {
+      method: "POST",
+      body: JSON.stringify(project),
     });
   }
 
-  async delete(_id: string): Promise<boolean> {
-    return Promise.resolve(true);
+  async update(id: number, project: Partial<Project>): Promise<Project> {
+    return apiFetch<Project>(`/projects/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(project),
+    });
+  }
+
+  async delete(id: number): Promise<void> {
+    await apiFetch(`/projects/${id}`, { method: "DELETE" });
   }
 }
 

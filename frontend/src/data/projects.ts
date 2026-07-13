@@ -2,17 +2,17 @@ import { ProjectStatus, type Project } from "../types";
 
 export const mockProjects: Project[] = [
   {
-    id: "P001",
+    id: 1,
     name: "Project Management Tool",
     description: "Internal project management application.",
-    status: ProjectStatus.ACTIVE,
+    status: ProjectStatus.IN_PROGRESS,
     startDate: "2026-07-01",
     endDate: "2026-10-30",
     createdAt: "2026-07-01",
     updatedAt: "2026-07-10",
   },
   {
-    id: "P002",
+    id: 2,
     name: "Employee Portal",
     description: "HR portal for employees.",
     status: ProjectStatus.PLANNING,

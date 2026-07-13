@@ -2,8 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { ActivityModule } from './activity/activity.module';
 import { AuthModule } from './auth/auth.module';
+import { CommentsModule } from './comments/comments.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { MilestonesModule } from './milestones/milestones.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { ProjectsModule } from './projects/projects.module';
 import { TasksModule } from './tasks/tasks.module';
 import { UsersModule } from './users/users.module';
@@ -41,6 +45,10 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     ProjectsModule,
     TasksModule,
+    MilestonesModule,
+    CommentsModule,
+    NotificationsModule,
+    ActivityModule,
     DashboardModule,
   ],
 })

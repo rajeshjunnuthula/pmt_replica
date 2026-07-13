@@ -2,9 +2,13 @@ import Card from "../common/Card";
 
 import ProjectListItem from "./ProjectListItem";
 
-import projects from "../../data/projects";
+import type { Project } from "../../types";
 
-function RecentProjectsCard() {
+interface RecentProjectsCardProps {
+  projects: Project[];
+}
+
+function RecentProjectsCard({ projects }: RecentProjectsCardProps) {
   return (
     <Card>
       <h2 className="text-xl font-semibold mb-4">

@@ -1,17 +1,16 @@
 import StatCard from "./StatCard";
 
-import projects from "../../data/projects";
-import tasks from "../../data/tasks";
+interface StatsGridProps {
+  totalProjects: number;
+  activeProjects: number;
+  totalTasks: number;
+}
 
-function StatsGrid() {
-  const totalProjects = projects.length;
-
-  const activeProjects = projects.filter(
-    (project) => project.status === "ACTIVE"
-  ).length;
-
-  const totalTasks = tasks.length;
-
+function StatsGrid({
+  totalProjects,
+  activeProjects,
+  totalTasks,
+}: StatsGridProps) {
   return (
     <div className="grid grid-cols-3 gap-6 mb-8">
 

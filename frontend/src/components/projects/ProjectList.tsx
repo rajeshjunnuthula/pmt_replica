@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 interface ProjectListProps {
   projects: Project[];
   onEdit: (project: Project) => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 }
 
 function ProjectList({

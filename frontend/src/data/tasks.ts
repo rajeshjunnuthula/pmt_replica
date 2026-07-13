@@ -6,11 +6,11 @@ import {
 
 const mockTasks: Task[] = [
   {
-    id: "T001",
+    id: 1,
     title: "Design Dashboard",
     description: "Complete the dashboard UI.",
-    projectId: "P001",
-    assigneeId: "U001",
+    projectId: 1,
+    assigneeId: 1,
     status: TaskStatus.IN_PROGRESS,
     priority: TaskPriority.HIGH,
     dueDate: "2026-07-20",
@@ -18,11 +18,11 @@ const mockTasks: Task[] = [
     updatedAt: "2026-07-10",
   },
   {
-    id: "T002",
+    id: 2,
     title: "Create Login API",
     description: "Implement authentication endpoints.",
-    projectId: "P001",
-    assigneeId: "U002",
+    projectId: 1,
+    assigneeId: 2,
     status: TaskStatus.TODO,
     priority: TaskPriority.CRITICAL,
     dueDate: "2026-07-22",

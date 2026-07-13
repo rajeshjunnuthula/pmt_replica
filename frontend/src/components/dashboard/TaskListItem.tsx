@@ -13,7 +13,7 @@ function TaskListItem({ task }: TaskListItemProps) {
         <p className="font-medium">{task.title}</p>
 
         <p className="text-sm text-gray-500">
-          {task.project}
+          {task.project?.name ?? ""}
         </p>
       </div>
 

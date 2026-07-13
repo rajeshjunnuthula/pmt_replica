@@ -2,9 +2,13 @@ import Card from "../common/Card";
 
 import TaskListItem from "./TaskListItem";
 
-import tasks from "../../data/tasks";
+import type { Task } from "../../types";
 
-function MyTasksCard() {
+interface MyTasksCardProps {
+  tasks: Task[];
+}
+
+function MyTasksCard({ tasks }: MyTasksCardProps) {
   return (
     <Card>
       <h2 className="text-xl font-semibold mb-4">

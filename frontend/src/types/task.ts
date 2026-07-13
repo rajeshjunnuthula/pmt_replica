@@ -19,14 +19,16 @@ export type TaskPriority =
   (typeof TaskPriority)[keyof typeof TaskPriority];
 
 export interface Task {
-  id: string;
+  id: number;
   title: string;
-  description: string;
-  projectId: string;
-  assigneeId: string;
+  description?: string;
+  projectId: number;
+  assigneeId?: number;
+  project?: { id: number; name: string };
+  assignee?: { id: number; name: string };
   status: TaskStatus;
   priority: TaskPriority;
-  dueDate: string;
+  dueDate?: string;
   createdAt: string;
   updatedAt: string;
 }

@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Avatar from "./Avatar";
+
+import { authApi } from "../../api/auth";
 
 const links = [
   {
@@ -26,6 +28,14 @@ const links = [
 ];
 
 function Navbar() {
+  const navigate = useNavigate();
+  const user = authApi.getUser();
+
+  function handleLogout() {
+    authApi.logout();
+    navigate("/login");
+  }
+
   return (
     <header className="bg-white border-b">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
@@ -54,17 +64,24 @@ function Navbar() {
 
         <div className="flex items-center gap-4">
 
-          <Avatar name="Rajesh" />
+          <Avatar name={user?.name ?? "?"} />
 
           <div>
             <h3 className="font-semibold">
-              Rajesh
+              {user?.name ?? "Guest"}
             </h3>
 
             <p className="text-sm text-gray-500">
-              ADMIN
+              {user?.role ?? ""}
             </p>
           </div>
+
+          <button
+            onClick={handleLogout}
+            className="text-sm text-red-600"
+          >
+            Logout
+          </button>
 
         </div>
       </div>

@@ -17,7 +17,7 @@ function ProjectListItem({
         </h3>
 
         <p className="text-sm text-gray-500">
-          {project.members} Members
+          {project.description || "No description"}
         </p>
       </div>
 

@@ -1,48 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PageHeader from "../components/common/PageHeader";
 import ProjectForm from "../components/projects/ProjectForm";
 import SearchBar from "../components/projects/SearchBar";
 import ProjectList from "../components/projects/ProjectList";
 
-import mockProjects from "../data/projects";
+import { projectApi } from "../api/projects";
+import { ApiError } from "../api/client";
 
-import { ProjectStatus, type Project } from "../types";
+import type { Project } from "../types";
 
 function Projects() {
-  const [projects, setProjects] = useState<Project[]>(mockProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
 
-  function handleAddProject(name: string) {
-    const now = new Date().toISOString().split("T")[0];
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      projectApi
+        .getAll(search)
+        .then(setProjects)
+        .catch((err) =>
+          setError(err instanceof ApiError ? err.message : "Failed to load projects")
+        );
+    }, 300);
 
-    const newProject: Project = {
-      id: `P${Date.now()}`,
-      name,
-      description: "",
-      status: ProjectStatus.ACTIVE,
-      startDate: now,
-      endDate: "",
-      createdAt: now,
-      updatedAt: now,
-    };
+    return () => clearTimeout(timeout);
+  }, [search]);
 
-    setProjects((prev) => [...prev, newProject]);
+  async function handleAddProject(name: string) {
+    try {
+      const newProject = await projectApi.create({ name });
+      setProjects((prev) => [...prev, newProject]);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to create project");
+    }
   }
 
-  function handleDeleteProject(id: string) {
-    setProjects((prev) =>
-      prev.filter((project) => project.id !== id)
-    );
+  async function handleDeleteProject(id: number) {
+    try {
+      await projectApi.delete(id);
+      setProjects((prev) => prev.filter((project) => project.id !== id));
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to delete project");
+    }
   }
 
   function handleEditProject(project: Project) {
     console.log("Edit Project:", project);
   }
-
-  const filteredProjects = projects.filter((project) =>
-    project.name.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <>
@@ -51,6 +57,10 @@ function Projects() {
         subtitle="Manage all your projects."
         buttonText="New Project"
       />
+
+      {error && (
+        <p className="text-red-600 text-sm mb-4">{error}</p>
+      )}
 
       <ProjectForm
         buttonText="Add Project"
@@ -63,7 +73,7 @@ function Projects() {
       />
 
       <ProjectList
-        projects={filteredProjects}
+        projects={projects}
         onEdit={handleEditProject}
         onDelete={handleDeleteProject}
       />
