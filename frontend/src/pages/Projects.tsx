@@ -8,7 +8,7 @@ import ProjectList from "../components/projects/ProjectList";
 import { projectApi } from "../api/projects";
 import { ApiError } from "../api/client";
 
-import type { Project } from "../types";
+import type { Project, ProjectStatus } from "../types";
 
 function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -50,6 +50,17 @@ function Projects() {
     console.log("Edit Project:", project);
   }
 
+  async function handleStatusChange(id: number, status: ProjectStatus) {
+    try {
+      const updated = await projectApi.update(id, { status });
+      setProjects((prev) =>
+        prev.map((project) => (project.id === id ? updated : project))
+      );
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to update status");
+    }
+  }
+
   return (
     <>
       <PageHeader
@@ -76,6 +87,7 @@ function Projects() {
         projects={projects}
         onEdit={handleEditProject}
         onDelete={handleDeleteProject}
+        onStatusChange={handleStatusChange}
       />
     </>
   );

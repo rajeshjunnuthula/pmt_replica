@@ -1,18 +1,19 @@
 import Card from "../common/Card";
-import Badge from "../common/Badge";
 
-import type { Project } from "../../types/project";
+import { ProjectStatus, type Project } from "../../types/project";
 
 interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;
   onDelete: (id: number) => void;
+  onStatusChange: (id: number, status: ProjectStatus) => void;
 }
 
 function ProjectCard({
   project,
   onEdit,
   onDelete,
+  onStatusChange,
 }: ProjectCardProps) {
   return (
     <Card className="mb-4">
@@ -34,9 +35,19 @@ function ProjectCard({
 
         <div className="flex items-center gap-3">
 
-          <Badge>
-            {project.status}
-          </Badge>
+          <select
+            value={project.status}
+            onChange={(event) =>
+              onStatusChange(project.id, event.target.value as ProjectStatus)
+            }
+            className="border rounded-lg px-3 py-1 text-sm"
+          >
+            {Object.values(ProjectStatus).map((status) => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}
+          </select>
 
           <button
             onClick={() => onEdit(project)}

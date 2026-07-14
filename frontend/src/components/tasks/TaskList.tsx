@@ -1,13 +1,20 @@
-import mockTasks from "../../data/tasks";
 import TaskCard from "./TaskCard";
 
-function TaskList() {
+import type { Task } from "../../types";
+
+interface TaskListProps {
+  tasks: Task[];
+  onDelete: (id: number) => void;
+}
+
+function TaskList({ tasks, onDelete }: TaskListProps) {
   return (
     <>
-      {mockTasks.map((task) => (
+      {tasks.map((task) => (
         <TaskCard
           key={task.id}
           task={task}
+          onDelete={onDelete}
         />
       ))}
     </>

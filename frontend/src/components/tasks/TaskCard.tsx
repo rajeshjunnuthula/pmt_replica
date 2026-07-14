@@ -5,9 +5,10 @@ import { type Task } from "../../types";
 
 interface TaskCardProps {
   task: Task;
+  onDelete: (id: number) => void;
 }
 
-function TaskCard({ task }: TaskCardProps) {
+function TaskCard({ task, onDelete }: TaskCardProps) {
   return (
     <Card className="mb-4">
       <div className="flex justify-between items-start">
@@ -22,13 +23,21 @@ function TaskCard({ task }: TaskCardProps) {
           </p>
 
           <p className="text-sm text-gray-500 mt-2">
-            Due: {task.dueDate}
+            {task.project?.name ? `${task.project.name} · ` : ""}
+            Due: {task.dueDate || "No due date"}
           </p>
         </div>
 
         <div className="flex flex-col items-end gap-2">
           <Badge>{task.priority}</Badge>
           <Badge>{task.status}</Badge>
+
+          <button
+            onClick={() => onDelete(task.id)}
+            className="text-red-600 text-sm"
+          >
+            Delete
+          </button>
         </div>
 
       </div>

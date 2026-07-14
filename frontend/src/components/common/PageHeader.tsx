@@ -4,12 +4,14 @@ interface PageHeaderProps {
   title: string;
   subtitle: string;
   buttonText?: string;
+  onButtonClick?: () => void;
 }
 
 function PageHeader({
   title,
   subtitle,
   buttonText,
+  onButtonClick,
 }: PageHeaderProps) {
   return (
     <div className="flex items-center justify-between mb-8">
@@ -24,7 +26,7 @@ function PageHeader({
       </div>
 
       {buttonText && (
-        <Button>{buttonText}</Button>
+        <Button onClick={onButtonClick}>{buttonText}</Button>
       )}
     </div>
   );

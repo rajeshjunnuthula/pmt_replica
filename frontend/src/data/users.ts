@@ -2,7 +2,7 @@ import { type User, UserRole } from "../types";
 
 export const mockUsers: User[] = [
   {
-    id: "U001",
+    id: 1,
     name: "Rajesh",
     email: "rajesh@example.com",
     role: UserRole.ADMIN,
@@ -10,7 +10,7 @@ export const mockUsers: User[] = [
     createdAt: "2026-07-01",
   },
   {
-    id: "U002",
+    id: 2,
     name: "John Doe",
     email: "john@example.com",
     role: UserRole.MANAGER,
@@ -18,7 +18,7 @@ export const mockUsers: User[] = [
     createdAt: "2026-07-02",
   },
   {
-    id: "U003",
+    id: 3,
     name: "Jane Smith",
     email: "jane@example.com",
     role: UserRole.MEMBER,
