@@ -11,19 +11,19 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  // Security
+  
   app.use(helmet());
 
-  // CORS
+  
   app.enableCors({
     origin: 'http://localhost:5173',
     credentials: true,
   });
 
-  // Global API Prefix
+ 
   app.setGlobalPrefix('api');
 
-  // Validation
+  
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -32,7 +32,7 @@ async function bootstrap() {
     }),
   );
 
-  // Swagger
+
   const swaggerConfig = new DocumentBuilder()
     .setTitle('PMT API')
     .setDescription('Project Management Tool Backend API')

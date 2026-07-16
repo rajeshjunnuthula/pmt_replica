@@ -10,6 +10,7 @@ import { MilestonesModule } from './milestones/milestones.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ProjectsModule } from './projects/projects.module';
 import { TasksModule } from './tasks/tasks.module';
+import { TicketsModule } from './tickets/tickets.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -45,6 +46,7 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     ProjectsModule,
     TasksModule,
+    TicketsModule,
     MilestonesModule,
     CommentsModule,
     NotificationsModule,

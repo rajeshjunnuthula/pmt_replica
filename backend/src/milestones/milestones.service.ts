@@ -21,6 +21,7 @@ export class MilestonesService {
   async findAll(projectId?: number) {
     return await this.milestoneRepository.find({
       where: projectId ? { projectId } : {},
+      relations: ['project'],
       order: { dueDate: 'ASC' },
     });
   }

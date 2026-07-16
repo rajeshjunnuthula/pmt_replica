@@ -22,7 +22,7 @@ function Dashboard() {
       <PageHeader
         title="Dashboard"
         subtitle="Welcome back! Here's an overview of your workspace."
-        buttonText="New Project"
+        // buttonText="New Project"
       />
 
       <StatsGrid
