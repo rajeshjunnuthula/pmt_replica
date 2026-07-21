@@ -11,7 +11,7 @@ function Card({
 }: CardProps) {
   return (
     <div
-      className={`bg-white border rounded-lg p-6 ${className}`}
+      className={`bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-6 ${className}`}
     >
       {children}
     </div>

@@ -8,7 +8,7 @@ function Badge({
   children,
 }: BadgeProps) {
   return (
-    <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full">
+    <span className="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-medium px-3 py-1 rounded-full">
       {children}
     </span>
   );
