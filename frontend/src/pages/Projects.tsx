@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import PageHeader from "../components/common/PageHeader";
 import ProjectForm from "../components/projects/ProjectForm";
@@ -14,25 +14,17 @@ function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
-  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    function loadProjects() {
+    const timeout = setTimeout(() => {
       projectApi
         .getAll(search)
         .then(setProjects)
         .catch((err) =>
           setError(err instanceof ApiError ? err.message : "Failed to load projects")
         );
-    }
+    }, 300);
 
-    if (isFirstLoad.current) {
-      isFirstLoad.current = false;
-      loadProjects();
-      return;
-    }
-
-    const timeout = setTimeout(loadProjects, 300);
     return () => clearTimeout(timeout);
   }, [search]);
 
@@ -74,6 +66,7 @@ function Projects() {
       <PageHeader
         title="Projects"
         subtitle="Manage all your projects."
+        //buttonText="New Project"
       />
 
       {error && (

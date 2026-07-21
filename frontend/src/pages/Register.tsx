@@ -26,10 +26,10 @@ function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-900">
       <form
         onSubmit={handleSubmit}
-        className="bg-white border rounded-lg p-8 w-full max-w-sm"
+        className="bg-white dark:bg-slate-800 border dark:border-slate-700 dark:text-slate-100 rounded-lg p-8 w-full max-w-sm"
       >
         <h1 className="text-2xl font-bold mb-6 text-indigo-600">
           Create an account
@@ -45,7 +45,7 @@ function Register() {
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Rajesh"
-          className="w-full border rounded-lg px-3 py-2 mb-4"
+          className="w-full border dark:border-slate-600 dark:bg-slate-700 rounded-lg px-3 py-2 mb-4"
         />
 
         <label className="block mb-2 font-medium">Email</label>
@@ -54,7 +54,7 @@ function Register() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="you@example.com"
-          className="w-full border rounded-lg px-3 py-2 mb-4"
+          className="w-full border dark:border-slate-600 dark:bg-slate-700 rounded-lg px-3 py-2 mb-4"
         />
 
         <label className="block mb-2 font-medium">Password</label>
@@ -63,7 +63,7 @@ function Register() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           placeholder="At least 6 characters"
-          className="w-full border rounded-lg px-3 py-2 mb-6"
+          className="w-full border dark:border-slate-600 dark:bg-slate-700 rounded-lg px-3 py-2 mb-6"
         />
 
         <button
@@ -73,7 +73,7 @@ function Register() {
           Register
         </button>
 
-        <p className="text-sm text-gray-500 mt-4">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-indigo-600">
             Log in

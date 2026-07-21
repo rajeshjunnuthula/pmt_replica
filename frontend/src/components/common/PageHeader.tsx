@@ -20,7 +20,7 @@ function PageHeader({
           {title}
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 dark:text-gray-400 mt-2">
           {subtitle}
         </p>
       </div>
